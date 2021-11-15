@@ -1,22 +1,55 @@
+const { Player } = require('./classes/player');
+const { convert } = require('./lib/arrtostr');
 const readline = require('readline-sync');
 
 const stdin = process.stdin;
+const player = new Player("placeholder");
 
-// without this, we would only get streams once enter is pressed
-stdin.setRawMode(true);
+function game() {
+  let key;
+  let area;
+  while (true) {
+    console.clear();
+    switch (player.currentArea) {
+      case "main":
+        const main = require('./menus/main');
+        area = main;
 
-// resume stdin in the parent process (node app won't quit all by itself
-// unless an error or process.exit() happens)
-stdin.resume();
+        this.check = convert(main, player);
 
-// i don't want binary, do you?
-stdin.setEncoding('utf8');
+        if (this.check === false) {
+          console.error("Unable to convert matrix to string");
+          process.exit();
+        } else {
+          console.log(this.check);
+        }
+        break;
+    }
 
-// on any data into stdin
-stdin.on('data', function (key) {
-  // ctrl-c ( end of text )
-  if (key === '\u0003' || key === 'q') {
-    process.exit();
+    key = readline.keyIn('', { hideEchoBack: true, mask: '', limit: 'wsq ' });
+    
+    switch (key) {
+      case "w":
+        if (player.position > 0) {
+          player.position -= 1;
+        }
+        break;
+      case "s":
+        if (player.position < area.length - 1) {
+          player.position += 1;
+        }
+        break;
+      case "q":
+        process.exit();
+        break;
+    }
   }
-  console.log({ key: key })
-});
+}
+/*
+OOP
+
+1: Check encounters
+2: Load menus
+*/
+
+game();
