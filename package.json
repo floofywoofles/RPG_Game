@@ -1,0 +1,11 @@
+{
+  "name": "RPG_Game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/floofywoofles/RPG_Game.git",
+  "author": "Floofywoofles <k.knapp.jr4@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
