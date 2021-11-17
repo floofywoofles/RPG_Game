@@ -1,0 +1,12 @@
+{
+    "dialogue": [
+        "You suddenly encounter a grizzly bear",
+        "You panic and throw your fish at it",
+        "The bear gazes at you stupidly and walks away with your freshly caught meal",
+        "**You feel like a complete loser: Health -1 and Strength -1**"
+    ],
+    "loss": [
+        {"type": "health","loss": 1},
+        {"type": "strength","loss": 1}
+    ]
+}
