@@ -3,6 +3,7 @@ function convert(map,player){
         this.out = "";
         for(let y = 0; y <= map.length-1; y++){
             for(let x = 0; x <= map[y].length-1; x++){
+                map[y][x] = map[y][x].replace('$',`${y+1}`)
                 if(player.position === y){
                     this.out += `[${map[y][x]}]`
                 } else {

@@ -1,9 +1,12 @@
 const { Player } = require('./classes/player');
 const { convert } = require('./lib/arrtostr');
 const readline = require('readline-sync');
+const {getArea} = require('./areas/getArea');
 
 const stdin = process.stdin;
 const player = new Player("placeholder");
+
+
 
 function game() {
   let key;
@@ -13,10 +16,9 @@ function game() {
     if(!player.isInMenu){
       switch (player.currentArea) {
         case "main":
-          const main = require('./menus/main');
-          area = main;
-  
-          this.check = convert(main, player);
+          area = getArea(player.currentArea);
+          console.log(area);
+          this.check = convert(area["areas"], player);
   
           if (this.check === false) {
             console.error("Unable to convert matrix to string");
@@ -50,6 +52,7 @@ function game() {
         process.exit();
         break;
       case " ":
+
         break;
     }
   }
