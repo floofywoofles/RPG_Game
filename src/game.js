@@ -10,20 +10,27 @@ function game() {
   let area;
   while (true) {
     console.clear();
-    switch (player.currentArea) {
-      case "main":
-        const main = require('./menus/main');
-        area = main;
-
-        this.check = convert(main, player);
-
-        if (this.check === false) {
-          console.error("Unable to convert matrix to string");
-          process.exit();
-        } else {
-          console.log(this.check);
-        }
-        break;
+    if(!player.isInMenu){
+      switch (player.currentArea) {
+        case "main":
+          const main = require('./menus/main');
+          area = main;
+  
+          this.check = convert(main, player);
+  
+          if (this.check === false) {
+            console.error("Unable to convert matrix to string");
+            process.exit();
+          } else {
+            console.log(this.check);
+          }
+          break;
+      }
+    } else {
+      switch(player.currentMenu){
+        case "inventory":
+          break;
+      }
     }
 
     key = readline.keyIn('', { hideEchoBack: true, mask: '', limit: 'wsq ' });
@@ -41,6 +48,8 @@ function game() {
         break;
       case "q":
         process.exit();
+        break;
+      case " ":
         break;
     }
   }
