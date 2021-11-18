@@ -2,8 +2,6 @@ const { Player } = require('./classes/player');
 const { convert } = require('./lib/arrtostr');
 const readline = require('readline-sync');
 const {getArea} = require('./areas/getArea');
-
-const stdin = process.stdin;
 const player = new Player("placeholder");
 
 
