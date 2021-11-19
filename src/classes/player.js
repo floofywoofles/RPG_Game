@@ -20,6 +20,11 @@ class Player {
             this.stats[stat] -= amount;
         }
     }
+
+    resetMenu(){
+        this.isInMenu = false;
+        this.currentMenu = "";
+    }
 }
 
 module.exports = {
